@@ -1,0 +1,137 @@
+/* Header Section */
+#header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between; /* Space between elements */
+	padding: 10px 20px;
+	background-color: white;  /*Header background color */
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+#header img{
+	height: 40px; /* Adjust logo size */
+}
+
+#nav{
+	flex-grow: 1;
+	text-align: center; /* Centers nav items */
+}
+
+#nav a{
+	margin: 0 15px; /* Space between nav items */
+	text-decoration: none;
+	color: black; /* Link color */
+	font-size: 16px; /* Font size for nav items */
+}
+
+#profile-btn{
+	text-decoration: none;
+	color: black; /* Profile button color */
+	font-size: 16px; /* Font size for profile button */
+}
+
+#browseBody{
+	background-color: white;
+	min-height: 100vh; /* Ensure it covers the full viewport height */
+	display: flex; 
+	justify-content: center; 
+	align-items: flex-start; /* Align items to start to prevent cutoff */
+	padding: 40px 20px; /* Space at the top and sides */
+	background-color: #983857;
+}
+
+#innerwrapper{
+	display: flex;
+	flex-direction: column;
+	align-items: center; 
+	width: 100%;
+	max-width: 900px; /* Increased max-width for better alignment */
+	padding: 40px; 
+	background-color: grey; 
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+	border-radius: 10px; 
+	margin: auto; /* Center the wrapper */
+}
+
+/* Main Section of the Body */
+body{
+	padding: 0;
+	margin: 0;
+	
+}
+
+.wrapper{
+	margin: 0 auto; /* Centers the wrapper */
+	width: 78%; /*  adjusts wideness of the layout on the Card */
+	max-width: 1200px;
+}
+
+.card-4{
+	width: 100%;
+	margin: 0;
+	
+}
+
+.page-wrapper{
+	padding-top: 25px; /* Adjusted from 100px to 50px */
+	padding-bottom: 25px; /* Adjusted from 100px to 50px */
+	background-color: #f5f4f4; /* #e6e6e6 */
+	/* background: linear-gradient(180deg, #f0f0f0, #d1d1d1); */
+	background-size: 100% 150%; /* Extend the gradient height 200% */
+}
+
+.form-group label{
+	text-align: left; 
+	margin-bottom: 5px; 
+	font-weight: bold; /* Make labels bold */
+}
+
+.form-group{
+	width: 100%;
+	margin-bottom: 20px; /* Space between form groups */
+}
+
+.form-group .col-sm-10{
+	padding-left: 0; /* Remove padding to align input without indentation */
+}
+
+.form-container{
+	width: 100%; 
+	padding: 20px; 
+	border-radius: 10px; 
+	background-color: white; 
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Text */
+h1{
+	text-align: left; 
+	margin-bottom: 30px; /* Space below header */
+	color: #333;
+	font-weight: bold;
+}
+
+/* Buttons */
+button[type=submit]{
+	width: 100%; /* Full width button (48 is half) */
+    /* transform: translate(50%, 50%);  Adjust the button position */
+}
+
+.gradient-btn{
+  background: linear-gradient(to right, #ffb369 0%, #ff4272 100%);
+  color: white; /* Text color inside the button*/
+}
+
+.gradient-btn:hover{
+  background: linear-gradient(to right, #ff4272 0%, #ffb369 100%);
+}
+
+/* Validation */
+.error{ 
+	color: red;
+	display: none;
+	/* Initially hide the error message */
+} 

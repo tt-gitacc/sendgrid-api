@@ -1,0 +1,118 @@
+<?php
+session_start();
+
+//Generate and store a token that protects against Cross-Site Request Forgery (CSRF)
+if(empty($_SESSION['csrf_token'])){
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en" id="submithtml">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<title>Register</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+		<link href="css/colorlib.css" rel="stylesheet" media="all">
+		<link href="css/custom.css" rel="stylesheet" media="all">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+	</head>
+
+	<body>
+		<header>
+			<div id="header">
+				<img src="images/CSDLogo.png" alt="Logo">
+				<div id="nav">	
+					<a href="home.php">Home</a>
+					<a href="about.php">About</a>
+					<a href="reports.php">Reports</a>
+				</div>
+				<a id="profile-btn" href="profile.php">Log In</a>
+			</div>
+		</header>
+		
+		<main>
+			<div class="page-wrapper  p-t-100 p-b-100 font-poppins">   
+				<div class="wrapper wrapper--w680">
+					<div class="card card-4">
+						<div class="card-body">
+							<h2 class="title">Registration Form</h2>
+							<!--Run register_action.php after the user presses the Submit button-->
+							<form class="form-horizontal" action="../src/register_action.php" method="post">
+								<div class="row row-space">
+									<div class="col-2">
+										<div class="input-group">
+											<label class="label">First Name</label>
+											<input type="text" class="input--style-4" id="fname" name="fname" required>
+										</div>
+									</div>
+									<div class="col-2">
+										<div class="input-group">
+											<label class="label">Last Name</label>
+											<input type="text" class="input--style-4" id="lname" name="lname" required>
+										</div>
+									</div>
+								</div>
+								<div class="row row-space">
+									<div class="col-2">
+										<div class="input-group">
+											<!--The user will be required to enter an email that ends with "asu.edu"-->
+											<label class="label">ASU Email</label>
+											<div class="input-group-icon">
+												<input type="email" class="input--style-4" id="email" name="email" required pattern="(\W|^)[\w.+\-]*@asu\.edu(\W|$)" required>
+												<div id="emailError">
+													<!--JS will pass an error message to this div if the email doesn't end in "asu.edu"-->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row row-space">
+									<div class="col-2">
+										<div class="input-group">
+											<!--The user will be required to enter a password longer than 8 characters-->
+											<label class="label">Password</label>
+											<input type="password" class="input--style-4" id="pass" name="pass" pattern=".{8,}" required>
+											<div id="passLengthError">
+												<!--JS will pass an error message to this div if the character count is less than 8-->
+											</div>
+										</div>
+									</div>
+									<div class="col-2">
+										<div class="input-group">
+											<!--When the user presses Submit, confirmPass.js will provide error handling-->
+											<label class="label">Confirm Password</label>
+											<input type="password" class="input--style-4" id="confirmPass" name="confirmPass" onblur="chk()" required>
+											<div id="error">
+												<!--JS will pass an error message to this div if the passwords don't match-->
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row row-space">
+									<div class="col-2">
+										<!--Blank space-->
+									</div>
+									<div class="col-2-">
+										<br>
+										<button class="btn btn--pill gradient-btn" type="submit" name="reg">Submit</button>
+									</div>
+								</div>
+								<!--Invisible CSRF Token that gets passed to the server-->
+								<input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+							</form>
+						</div>
+					</div>			
+				</div>
+			</div>
+
+			<!--Run confirmPass.js to see whether or not the passwords match-->
+			<script src="js/confirmPass.js" type="text/javascript"></script>
+		</main>
+
+	</body>
+</html>
